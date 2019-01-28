@@ -1,0 +1,9 @@
+---
+- name: Reload systemd
+  command: systemctl daemon-reload
+
+- name: Restart kube-controller-manager
+  service:
+    name: kube-controller-manager
+    state: restarted
+    enabled: True
