@@ -2,8 +2,9 @@
 - name: Install package
   become: True
   package:
-    name: hyperkube
+    name: kubernetes-hyperkube-kube-controller-manager
     state: present
+    update_cache: True
 
 - name: Configure package
   become: True
@@ -12,7 +13,7 @@
     dest: /etc/systemd/system/kube-controller-manager.service
     owner: root
     group: root
-    mode: 0640
+    mode: 0644
   notify:
     - Reload systemd
     - Restart kube-controller-manager

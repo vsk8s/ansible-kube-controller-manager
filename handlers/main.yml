@@ -1,8 +1,10 @@
 ---
 - name: Reload systemd
+  become: True
   command: systemctl daemon-reload
 
 - name: Restart kube-controller-manager
+  become: True
   service:
     name: kube-controller-manager
     state: restarted

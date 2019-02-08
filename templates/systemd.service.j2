@@ -5,12 +5,10 @@ Description=Kubernetes Controller Manager
 ExecStart=/usr/bin/hyperkube controller-manager                             \
     --master=127.0.0.1:8080                                                 \
     --v=2                                                                   \
-    --cluster-cidr={{ kube_controller_manager_cluster_net }}                \
-    --service-account-private-key-file={{ kube_controller_manager_service_account_key }} \
-    --root-ca-file={{ kube_controller_manager_cafile }}
+    --cluster-cidr={{ kube_controller_manager_cluster_net }}
 
 Restart=on-failure
-Type=notify
+Type=simple
 
 [Install]
 WantedBy=multi-user.target
