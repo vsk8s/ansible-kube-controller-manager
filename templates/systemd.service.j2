@@ -3,8 +3,7 @@ Description=Kubernetes Controller Manager
 
 [Service]
 ExecStart=/usr/bin/hyperkube controller-manager                             \
-    --master=127.0.0.1:8080                                                 \
-    --v=2                                                                   \
+    --kubeconfig {{ kube_controller_manager_kubeconfig }}                   \
     --cluster-cidr={{ kube_controller_manager_cluster_net }}
 
 Restart=on-failure
