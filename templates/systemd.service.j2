@@ -4,6 +4,7 @@ Description=Kubernetes Controller Manager
 [Service]
 ExecStart=/usr/bin/hyperkube controller-manager                             \
     --kubeconfig {{ kube_controller_manager_kubeconfig }}                   \
+    --service-account-private-key-file={{ kube_controller_manager_service_account_key }} \
     --cluster-cidr={{ kube_controller_manager_cluster_net }}
 
 Restart=on-failure
