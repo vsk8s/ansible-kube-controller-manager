@@ -5,8 +5,8 @@ Description=Kubernetes Controller Manager
 ExecStart=/usr/bin/hyperkube controller-manager                             \
     --kubeconfig {{ kube_controller_manager_kubeconfig }}                   \
     --service-account-private-key-file={{ kube_controller_manager_service_account_key }} \
-    --cluster-cidr={{ kube_controller_manager_cluster_net }}                \
-    --service-cluster-ip-range={{ kube_controller_manager_service_net }}   \
+    --cluster-cidr={{ kubernetes_cluster_cidr }}                            \
+    --service-cluster-ip-range={{ kubernetes_service_cidr }}                \
     --allocate-node-cidrs=true                                              \
     --use-service-account-credentials
 
