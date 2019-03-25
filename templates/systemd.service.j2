@@ -8,6 +8,7 @@ ExecStart=/usr/bin/hyperkube controller-manager                             \
     --cluster-cidr={{ kubernetes_cluster_cidr }}                            \
     --service-cluster-ip-range={{ kubernetes_service_cidr }}                \
     --allocate-node-cidrs=true                                              \
+    --root-ca-file={{ kube_controller_manager_apiserver_ca }}               \
     --use-service-account-credentials
 
 Restart=on-failure
