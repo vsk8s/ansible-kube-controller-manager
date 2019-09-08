@@ -17,3 +17,7 @@
   notify:
     - Reload systemd
     - Restart kube-controller-manager
+
+- name: Flush handlers
+  meta: flush_handlers
+
