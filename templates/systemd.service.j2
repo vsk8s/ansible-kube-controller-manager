@@ -2,7 +2,7 @@
 Description=Kubernetes Controller Manager
 
 [Service]
-ExecStart=/usr/bin/hyperkube kube-controller-manager                        \
+ExecStart=/usr/bin/kube-controller-manager                                  \
     --kubeconfig {{ kube_controller_manager_kubeconfig }}                   \
     --service-account-private-key-file={{ kube_controller_manager_service_account_key }} \
     --cluster-cidr={{ kubernetes_cluster_cidr }}                            \
