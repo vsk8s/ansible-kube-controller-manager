@@ -5,10 +5,13 @@ Description=Kubernetes Controller Manager
 ExecStart=/usr/bin/kube-controller-manager                                  \
     --kubeconfig {{ kube_controller_manager_kubeconfig }}                   \
     --service-account-private-key-file={{ kube_controller_manager_service_account_key }} \
-    --cluster-cidr={{ kubernetes_cluster_cidr }}                            \
-    --service-cluster-ip-range={{ kubernetes_service_cidr }}                \
+    --cluster-cidr={{ kubernetes_cluster_cidr }}{% if kubernetes_ipv6_enabled %},{{ kubernetes_cluster_cidr_v6 }}{% endif %}                            \
+    --service-cluster-ip-range={{ kubernetes_service_cidr }}{% if kubernetes_ipv6_enabled %},{{ kubernetes_service_cidr_v6 }}{% endif %}                \
     --allocate-node-cidrs=true                                              \
     --root-ca-file={{ kube_controller_manager_apiserver_ca }}               \
+{% if kubernetes_ipv6_enabled %}
+    --node-cidr-mask-size-ipv6={{ kubernetes_ipv6_node_subnet_size }}       \
+{% endif %}
     --use-service-account-credentials
 
 Restart=on-failure

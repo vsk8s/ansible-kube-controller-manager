@@ -1,6 +1,8 @@
 ---
 kubernetes_cluster_cidr: 10.0.0.1/24
 kubernetes_service_cidr: 10.0.1.0/24
+kubernetes_ipv6_enabled: False
+kubernetes_ipv6_node_subnet_size: 120
 kube_controller_manager_kubeconfig: "/etc/kubernetes/kube-controller-manager/kubeconfig.yml"
 kube_controller_manager_service_account_key: "/path/aligned/with/apiserver.pem"
 kube_controller_manager_apiserver_ca: "/path/aligned/with/apiserver.pem"
